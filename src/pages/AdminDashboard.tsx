@@ -86,6 +86,12 @@ Manage products
 >
   View Orders
 </Link>
+<Link
+  to="/admin-favorites"
+  className="bg-pink-500 text-white px-4 py-2 rounded"
+>
+  Customer Favorites
+</Link>
       </div>
 
     </div>

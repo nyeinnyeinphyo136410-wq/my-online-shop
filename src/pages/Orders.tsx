@@ -52,14 +52,7 @@ useEffect(() => {
 
 
       
-      {orders
-.filter(
-  order =>
-    order.customerName &&
-    order.products &&
-    order.products.length > 0
-)
-.map(order => (
+      {orders.map(order => (
         <div
           key={order.id}
           className="border p-5 rounded mb-5"

@@ -16,6 +16,7 @@ import Orders from "./pages/Orders";
 import MyOrders from "./pages/MyOrder";
 import ProductDetail from "./pages/ProductDetail";
 import Products from "./pages/Products";
+import AdminFavorites from "./pages/AdminFavorites";
 function App() {
   
   const [cart, setCart] = useState<Product[]>([]);
@@ -142,6 +143,10 @@ const decrease = (id:string) => {
 <Route
  path="/my-orders"
  element={<MyOrders />}
+/>
+<Route
+  path="/admin-favorites"
+  element={<AdminFavorites />}
 />
 <Route
   path="/product/:id"

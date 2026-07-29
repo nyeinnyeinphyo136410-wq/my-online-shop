@@ -54,9 +54,15 @@ function Navbar({ cartCount }: Props) {
         <Link to="/cart">
 🛒       Cart ({cartCount})
         </Link>
-        <Link to="/my-orders">
-        My Orders
-        </Link>
+        {user?.email === "nyeinnyeinphyo136410@gmail.com" ? (
+  <Link to="/orders">
+    Customer Orders
+  </Link>
+) : (
+  <Link to="/my-orders">
+    My Orders
+  </Link>
+)}
 
       </div>
        {

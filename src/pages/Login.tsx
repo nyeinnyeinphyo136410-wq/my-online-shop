@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { signInWithEmailAndPassword } from "firebase/auth";
+import { signInWithEmailAndPassword, signOut } from "firebase/auth";
 import { auth } from "../firebase";
 
 
@@ -12,13 +12,14 @@ const [password,setPassword]=useState("");
 const handleLogin = async() => {
 
 try{
+    await signOut(auth);
 
  const result = await signInWithEmailAndPassword(
 auth,
 email,
 password
 );
-console.log(result.user.email);
+console.log("LOGIN USER:", result.user.email);
 alert("Login Success");
 
 
@@ -36,7 +37,7 @@ return(
 <div className="p-10">
 
 <h1 className="text-3xl font-bold">
-Login
+Customer Login
 </h1>
 
 

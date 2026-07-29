@@ -8,18 +8,22 @@ import {
   updateDoc
 } from "firebase/firestore";
 import { auth, db } from "../firebase";
+import type { Product } from "../types";
 
 type Order = {
   id: string;
   customerName: string;
   totalPrice: number;
   status: string;
+  products?: Product[];
 };
+
 
 function MyOrders() {
   const [orders, setOrders] = useState<Order[]>([]);
 
   const fetchOrders = async () => {
+    
     const q = query(
       collection(db, "orders"),
       where("userEmail", "==", auth.currentUser?.email)
@@ -31,7 +35,7 @@ function MyOrders() {
       id: doc.id,
       ...doc.data()
     })) as Order[];
-
+    
     setOrders(data);
   };
 
@@ -40,12 +44,22 @@ function MyOrders() {
   }, []);
 
   const cancelOrder = async (id: string) => {
-    await updateDoc(doc(db, "orders", id), {
-      status: "Cancelled"
-    });
 
-    fetchOrders();
-  };
+  const confirmCancel = window.confirm(
+    "Are you sure you want to cancel this order?"
+  );
+
+  if (!confirmCancel) {
+    return;
+  }
+
+  await updateDoc(doc(db, "orders", id), {
+    status: "Cancelled"
+  });
+
+  fetchOrders();
+
+};
 
   return (
     <div className="p-10">
@@ -64,6 +78,27 @@ function MyOrders() {
           <p>Status : {order.status}</p>
 
           <p>Total : {order.totalPrice} MMK</p>
+          <h3 className="font-bold mt-3">
+  Products:
+</h3>
+
+{order.products?.map((item, index) => (
+  <div key={index} className="border p-2 mt-2 rounded">
+
+    <p>
+      Name: {item.name}
+    </p>
+
+    <p>
+      Quantity: {item.quantity}
+    </p>
+
+    <p>
+      Price: {item.price} MMK
+    </p>
+
+  </div>
+))}
 
           {order.status === "Pending" && (
 
