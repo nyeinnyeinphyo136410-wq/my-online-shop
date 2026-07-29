@@ -35,15 +35,19 @@ function ManageProducts(){
 
 
 
-  const deleteProduct = async(id:string)=>{
+  const deleteProduct = async (id: string) => {
 
-    await deleteDoc(
-      doc(db,"products",id)
-    );
+  const ok = window.confirm(
+    "Are you sure you want to delete this product?"
+  );
 
+  if (!ok) {
+    return;
+  }
 
-    alert("Product Deleted");
+  await deleteDoc(doc(db, "products", id));
 
+  alert("Product Deleted Successfully");
 
     fetchProducts();
 
@@ -82,13 +86,13 @@ function ManageProducts(){
 
              <Link
   to={`/edit-product/${product.id}`}
-  className="bg-yellow-500 text-white px-4 py-2 rounded mr-2"
+  className="hover:bg-yellow-200 bg-yellow-500 text-white px-4 py-2 rounded mr-2"
 >
   Edit
 </Link>
             <button
             onClick={()=>deleteProduct(product.id)}
-            className="bg-red-600 text-white px-4 py-2 rounded"
+            className="hover:bg-red-300 bg-red-600 text-white px-4 py-2 rounded"
             >
               Delete
             </button>

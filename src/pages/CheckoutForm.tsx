@@ -1,7 +1,8 @@
 import { useState } from "react";
 import type { Product } from "../types";
-import { collection, addDoc } from "firebase/firestore";
+import { collection, addDoc, serverTimestamp } from "firebase/firestore";
 import { db } from "../firebase";
+import { auth } from "../firebase";
 type Props = {
   cart: Product[];
   totalPrice: number;
@@ -13,7 +14,6 @@ const [name,setName] = useState("");
 const [phone,setPhone] = useState("");
 const [address,setAddress] = useState("");
 const [payment, setPayment] = useState("Cash on  Delivery");
-
 const handleOrder = async () => {
   if (!name || !phone || !address ) {
     alert("Please fill all fields");
@@ -26,7 +26,9 @@ const handleOrder = async () => {
     payment: payment,
     products: cart,
     totalPrice: totalPrice,
-    createdAt: new Date()
+    status: "Pending",
+    createdAt: serverTimestamp(),
+    userEmail: auth.currentUser?.email
   });
 
   alert("Order Placed Successfully!");

@@ -46,13 +46,18 @@ function Navbar({ cartCount }: Props) {
           Home
         </Link>
 
-        <Link to="/#products">
-          Product
+        <Link to="/products">
+          Products
         </Link>
 
+
         <Link to="/cart">
-🛒 Cart ({cartCount})
-</Link>
+🛒       Cart ({cartCount})
+        </Link>
+        <Link to="/my-orders">
+        My Orders
+        </Link>
+
       </div>
        {
         user ? (
@@ -83,8 +88,7 @@ function Navbar({ cartCount }: Props) {
 </Link>
         )
       }
-     
-<section id="products" className="p-10"></section>
+    
     </nav>
   );
 }

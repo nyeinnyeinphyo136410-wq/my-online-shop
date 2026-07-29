@@ -13,6 +13,9 @@ import Cart from "./pages/Cart";
 import ManageProducts from "./pages/ManageProducts";
 import EditProduct from "./pages/EditProduct";
 import Orders from "./pages/Orders";
+import MyOrders from "./pages/MyOrder";
+import ProductDetail from "./pages/ProductDetail";
+import Products from "./pages/Products";
 function App() {
   
   const [cart, setCart] = useState<Product[]>([]);
@@ -102,9 +105,13 @@ const decrease = (id:string) => {
 <Routes>
       <Route
         path="/"
-        element={<Home addToCart={addToCart}/>}
+        element={<Home />}
       />
-
+      <Route
+        path="/products"
+        element={<Products
+        addToCart={addToCart} />}
+      />
       <Route
         path="/login"
         element={<Login />}
@@ -130,6 +137,15 @@ const decrease = (id:string) => {
 <Route
  path="/orders"
  element={<Orders />}
+/>
+
+<Route
+ path="/my-orders"
+ element={<MyOrders />}
+/>
+<Route
+  path="/product/:id"
+  element={<ProductDetail />}
 />
 <Route
       path="/checkout"

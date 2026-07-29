@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { collection, getDocs } from "firebase/firestore";
+import { collection, getDocs, updateDoc, doc } from "firebase/firestore";
 import { db } from "../firebase";
 
 type Order = {
@@ -9,33 +9,38 @@ type Order = {
   address: string;
   payment: string;
   totalPrice: number;
+  status: string;
   products?: any[];
 };
 
 function Orders() {
 
   const [orders, setOrders] = useState<Order[]>([]);
+const fetchOrders = async () => {
+  const snapshot = await getDocs(collection(db, "orders"));
 
-  useEffect(() => {
+  const data = snapshot.docs.map(doc => ({
+    id: doc.id,
+    ...doc.data(),
+  })) as Order[];
 
-    const fetchOrders = async () => {
+  setOrders(data);
+};
 
-      const snapshot = await getDocs(
-        collection(db, "orders")
-      );
+const updateStatus = async (
+  id: string,
+  status: string
+) => {
+  await updateDoc(doc(db, "orders", id), {
+    status,
+  });
 
-      const data = snapshot.docs.map(doc => ({
-        id: doc.id,
-        ...doc.data()
-      })) as Order[];
+  fetchOrders();
+};
 
-      setOrders(data);
-
-    };
-
-    fetchOrders();
-
-  }, []);
+useEffect(() => {
+  fetchOrders();
+}, []);
 
 
   return (
@@ -75,6 +80,9 @@ function Orders() {
           <p>
             Payment: {order.payment}
           </p>
+          <p>
+            Status: {order.status}
+          </p>
 
 
           <h3 className="font-bold mt-3">
@@ -91,14 +99,36 @@ function Orders() {
           <p className="font-bold mt-3">
             Total: {order.totalPrice} MMK
           </p>
-
+          <div className="mt-3 flex gap-2 ">
+  <button
+  onClick={() =>
+    updateStatus(order.id, "Pending")
+  }
+  className="bg-yellow-400 text-white px-3 py-1 rounded">
+    Pending
+  </button>
+  <button
+  onClick={() =>
+    updateStatus(order.id, "Shipping")
+  }
+  className="bg-yellow-400 text-white px-3 py-1 rounded">
+    Shipping
+  </button>
+  <button
+  onClick={() =>
+    updateStatus(order.id, "Delivered")
+  }
+  className="bg-yellow-400 text-white px-3 py-1 rounded">
+    Delivered
+  </button>
+</div>
 
         </div>
 
       ))}
 
-
     </div>
+    
   );
 }
 

@@ -76,7 +76,7 @@ function AddProduct() {
 
       <input
         className="border p-3 w-full mb-3"
-        placeholder="Image Path"
+        placeholder="Image "
         value={image}
         onChange={(e)=>setImage(e.target.value)}
       />
