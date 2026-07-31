@@ -1,6 +1,8 @@
 import { useState } from "react";
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../firebase";
+import { doc, setDoc } from "firebase/firestore";
+import { db } from "../firebase";
 
 
 function Register(){
@@ -18,7 +20,8 @@ const result = await createUserWithEmailAndPassword(
  email,
  password
 );
-console.log(result.user.email);
+await setDoc(doc(db, "user", result.user.uid), {email:  result.user.email,
+createdAt: new Date()});
 alert("Register Success");
 
 } catch(error) {

@@ -7,6 +7,7 @@ import { Link } from "react-router-dom";
 function AdminDashboard() {
    const [totalProducts, setTotalProducts] = useState(0);
    const [totalOrders, setTotalOrders] = useState(0);
+   const [totalUsers, setTotalUsers] = useState(0);
    const navigate =useNavigate();
     useEffect(() => {
       const checkAdmin = () => {
@@ -22,9 +23,14 @@ function AdminDashboard() {
       const ordersSnapshot = await getDocs(
         collection(db, "orders")
       );
+      const usersSnapshot = await getDocs(
+        collection(db, "users")
+      );
+
 
       setTotalProducts(productsSnapshot.size);
       setTotalOrders(ordersSnapshot.size);
+      setTotalUsers(usersSnapshot.size);
     };
 
 
@@ -41,6 +47,7 @@ checkAdmin();
       <h1 className="text-4xl font-bold mb-8">
         Admin Dashboard
       </h1>
+      <h2>{totalUsers}</h2>
 
       <div className="grid grid-cols-3 gap-5">
 
