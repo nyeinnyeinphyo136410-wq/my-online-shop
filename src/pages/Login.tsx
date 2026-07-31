@@ -60,7 +60,7 @@ onChange={(e)=>setPassword(e.target.value)}
 <button
 type="button"
 onClick={() => setShowPassword(!showPassword)}
-className="absolute right-3 top-1/2-translate-y-1/2">
+className="absolute right-3 top-1/2 -translate-y-1/2">
     {showPassword ? <FaEyeSlash /> : <FaEye />}
 </button>
 </div>
