@@ -72,6 +72,9 @@ const addFavorite = async () => {
       <p className="font-bold">
         {product.price} MMK
       </p>
+      <p>
+  Stock: {product.stock}
+</p>
       
 
       <div className="flex gap-3 mt-auto">
@@ -80,6 +83,8 @@ const addFavorite = async () => {
           Out of Stock
         </p>
        ):(
+
+      
       <button 
       onClick={() => addToCart(product)}
         className="hover:scale-110 cursor-pointer bg-blue-600 hover:bg-red-400 text-white px-5 py-2 mr-3 mt-4 rounded-lg"
