@@ -1,6 +1,6 @@
 import { useState } from "react";
 import type { Product } from "../types";
-import { collection, addDoc, serverTimestamp } from "firebase/firestore";
+import { collection, addDoc, serverTimestamp, doc, updateDoc,increment } from "firebase/firestore";
 import { db } from "../firebase";
 import { auth } from "../firebase";
 type Props = {
@@ -30,6 +30,13 @@ const handleOrder = async () => {
     createdAt: serverTimestamp(),
     userEmail: auth.currentUser?.email
   });
+  for (const item of cart) {
+
+  await updateDoc(doc(db, "products", item.id), {
+    stock: increment(-(item.quantity || 1))
+  });
+
+}
 
   alert("Order Placed Successfully!");
 

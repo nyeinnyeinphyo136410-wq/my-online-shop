@@ -11,6 +11,7 @@ function AddProduct() {
   const [category, setCategory] = useState("");
   const [brand, setBrand] = useState("");
   const [color, setColor] = useState("");
+  const [stock, setStock] = useState(0);
 
 
   const handleAddProduct = async () => {
@@ -23,7 +24,8 @@ function AddProduct() {
         image,
         category,
         brand,
-        color
+        color,
+        stock: stock
       });
 
 
@@ -36,6 +38,7 @@ function AddProduct() {
       setCategory("");
       setBrand("");
       setColor("");
+      setStock(0);
 
 
     } catch(error) {
@@ -104,6 +107,16 @@ function AddProduct() {
         value={color}
         onChange={(e)=>setColor(e.target.value)}
       />
+
+
+      <input
+      type="number"
+        className="border p-3 w-full mb-3 rounded"
+        placeholder="Stock"
+        value={stock}
+        onChange={(e)=>setStock(Number(e.target.value))}
+      />
+
 
 
       <button
