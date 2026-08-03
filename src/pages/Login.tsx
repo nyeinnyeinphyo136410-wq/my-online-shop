@@ -2,10 +2,10 @@ import { useState } from "react";
 import { signInWithEmailAndPassword, signOut } from "firebase/auth";
 import { auth } from "../firebase";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
-
+import { useNavigate } from "react-router-dom";
 
 function Login(){
-
+ const navigate = useNavigate();
 const [email,setEmail]=useState("");
 const [password,setPassword]=useState("");
 const [showPassword, setShowPassword] = useState(false);
@@ -23,7 +23,7 @@ password
 );
 console.log("LOGIN USER:", result.user.email);
 alert("Login Success");
-
+navigate("/");
 
 }catch(error:any) {
 
