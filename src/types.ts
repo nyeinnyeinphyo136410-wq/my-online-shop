@@ -7,6 +7,7 @@ export type Product = {
   brand: string;
   color: string;
   quantity?: number;
+  stock: number;
 };
 
  
