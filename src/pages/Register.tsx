@@ -1,10 +1,17 @@
 import { useState } from "react";
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../firebase";
+<<<<<<< HEAD
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { doc, setDoc } from "firebase/firestore";
 import { db } from "../firebase";
 import { useNavigate } from "react-router-dom";
+=======
+import { doc, setDoc } from "firebase/firestore";
+import { db } from "../firebase";
+
+
+>>>>>>> Nyein
 function Register(){
 const navigate = useNavigate();
 const [email,setEmail] = useState("");
@@ -21,10 +28,15 @@ const result = await createUserWithEmailAndPassword(
  email,
  password
 );
+<<<<<<< HEAD
 await setDoc(doc(db, "users", result.user.uid), {
   email: result.user.email,
   createdAt: new Date()
 });
+=======
+await setDoc(doc(db, "user", result.user.uid), {email:  result.user.email,
+createdAt: new Date()});
+>>>>>>> Nyein
 alert("Register Success");
 navigate("/");
 

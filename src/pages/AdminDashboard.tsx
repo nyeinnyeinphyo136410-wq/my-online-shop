@@ -26,7 +26,6 @@ function AdminDashboard() {
       const usersSnapshot = await getDocs(
         collection(db, "users")
       );
-      console.log("Users:", usersSnapshot.size);
 
 
       setTotalProducts(productsSnapshot.size);
