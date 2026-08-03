@@ -38,7 +38,7 @@ function AddProduct() {
       setCategory("");
       setBrand("");
       setColor("");
-      setStock(0);
+      setStock(0)
 
 
     } catch(error) {
