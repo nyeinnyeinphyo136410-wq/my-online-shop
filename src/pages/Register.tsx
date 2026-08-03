@@ -2,9 +2,11 @@ import { useState } from "react";
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../firebase";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
-
+import { doc, setDoc } from "firebase/firestore";
+import { db } from "../firebase";
+import { useNavigate } from "react-router-dom";
 function Register(){
-
+const navigate = useNavigate();
 const [email,setEmail] = useState("");
 const [password,setPassword] = useState("");
 const [showPassword, setShowPassword] = useState(false);
@@ -19,12 +21,16 @@ const result = await createUserWithEmailAndPassword(
  email,
  password
 );
-console.log(result.user.email);
+await setDoc(doc(db, "users", result.user.uid), {
+  email: result.user.email,
+  createdAt: new Date()
+});
 alert("Register Success");
+navigate("/");
 
-} catch(error) {
+} catch(error: any) {
 
-    console.log(error);
+    console.log(error.message);
 
   }
 
@@ -57,7 +63,7 @@ onChange={(e)=>setPassword(e.target.value)}
 <button
 type="button"
 onClick={() => setShowPassword(!showPassword)}
-className="absolute right-3 top-1/2-translate-y-1/2">
+className="absolute right-3 top-1/2 -translate-y-1/2">
     {showPassword ? <FaEyeSlash /> : <FaEye />}
 </button>
 </div>
