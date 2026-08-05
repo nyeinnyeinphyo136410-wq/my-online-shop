@@ -2,7 +2,7 @@ function Footer(){
 
 return(
 
-<footer className="bg-gray-900 text-white text-center p-5">
+<footer className="bg-[#f3eddb] text-black text-center p-5">
 
 © 2026 My Shop
 
