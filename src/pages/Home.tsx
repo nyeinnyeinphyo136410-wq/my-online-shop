@@ -22,6 +22,7 @@ function Home() {
     name: "Accessory",
     image: headphonesImg
   }
+  
 ];
   return (
     <main>
