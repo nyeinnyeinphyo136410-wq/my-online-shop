@@ -1,0 +1,25 @@
+.categories {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+}
+
+.category-card {
+  padding: 20px;
+  border-radius: 20px;
+  text-align: center;
+  background: white;
+  box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+}
+
+.category-card img {
+  width: 120px;
+  height: 120px;
+  object-fit: contain;
+}
+
+.category-card button {
+  padding: 10px 20px;
+  border-radius: 20px;
+  cursor: pointer;
+}

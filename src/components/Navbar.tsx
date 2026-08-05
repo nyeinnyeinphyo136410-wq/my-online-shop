@@ -35,7 +35,7 @@ function Navbar({ cartCount }: Props) {
 
   };
   return (
-    <nav className="bg-blue-600 text-white p-5 flex justify-between">
+    <nav className="bg-[#85827c] text-white p-5 flex justify-between">
 
       <h1 className="text-2xl font-bold">
         My Shop
