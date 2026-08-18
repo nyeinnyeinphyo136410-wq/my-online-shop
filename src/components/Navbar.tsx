@@ -69,7 +69,7 @@ function Navbar({ cartCount }: Props) {
         user ? (
            <div className="flex items-center gap-3">
 
-            <span className="bg-black text-white p-2">
+            <span className="bg-blue-200 rounded-2xl text-white p-2">
   {user ? user.email : "No User"}
 </span>
 {user?.email === 
