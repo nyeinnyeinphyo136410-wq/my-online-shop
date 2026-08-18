@@ -41,16 +41,9 @@ function Home() {
 
               <Link
                 to="/products"
-                className="bg-white text-blue-600 px-6 py-3 rounded-lg font-semibold"
+                className="hover:scale-110 bg-white text-blue-600 px-6 py-3 rounded-lg font-semibold"
               >
                 Shop Now
-              </Link>
-
-              <Link
-                to="/products"
-                className="border border-white px-6 py-3 rounded-lg"
-              >
-                View Products
               </Link>
 
             </div>
@@ -80,45 +73,7 @@ function Home() {
 </div>
         </section>
 
-      <section className="bg-gray-100 py-16">
-
-        <h2 className="text-4xl font-bold text-center">
-          Why Choose Us
-        </h2>
-
-        <div className="max-w-6xl mx-auto grid md:grid-cols-4 gap-6 mt-10">
-
-          <div className="bg-white p-8 rounded-xl shadow text-center">
-            🚚
-            <h3 className="text-xl font-bold mt-3">
-              Fast Delivery
-            </h3>
-          </div>
-
-          <div className="bg-white p-8 rounded-xl shadow text-center">
-            🔒
-            <h3 className="text-xl font-bold mt-3">
-              Secure Payment
-            </h3>
-          </div>
-
-          <div className="bg-white p-8 rounded-xl shadow text-center">
-            ⭐
-            <h3 className="text-xl font-bold mt-3">
-              Best Quality
-            </h3>
-          </div>
-
-          <div className="bg-white p-8 rounded-xl shadow text-center">
-            💬
-            <h3 className="text-xl font-bold mt-3">
-              24/7 Support
-            </h3>
-          </div>
-
-        </div>
-
-      </section>
+    
       
      </main>
   );
