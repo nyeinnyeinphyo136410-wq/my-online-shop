@@ -7,14 +7,14 @@ import { db } from "../firebase";
 import { useNavigate } from "react-router-dom";
 
 
-function Register(){
+function SignUP(){
 const navigate = useNavigate();
 const [email,setEmail] = useState("");
 const [password,setPassword] = useState("");
 const [showPassword, setShowPassword] = useState(false);
 
 
-const handleRegister = async()=>{
+const handleSignup = async()=>{
 
 try{
 
@@ -29,15 +29,15 @@ await setDoc(doc(db, "users", result.user.uid), {
   createdAt: new Date()
 });
 
-alert("Register Success");
+alert("Signup Success");
 navigate("/");
 
-} catch(error: any) {
+ } catch (error: any) {
+  console.log("SIGNUP ERROR:", error.code);
+  console.log("MESSAGE:", error.message);
 
-    console.log(error.message);
-
-  }
-
+  alert(`${error.code}\n${error.message}`);
+}
 
 };
 
@@ -47,7 +47,7 @@ return(
 <div className="p-10">
 
 <h1 className="text-3xl font-bold mb-5">
-Customer Register
+Customer Signup
 </h1>
 
 
@@ -72,10 +72,10 @@ className="absolute right-3 top-1/2 -translate-y-1/2">
 </button>
 </div>
 <button
-onClick={handleRegister}
-className="cursor-pointer bg-blue-600 text-white px-5 py-2 rounded"
+onClick={handleSignup}
+className="cursor-pointer hover:bg-blue-400 bg-blue-600 text-white px-5 py-2 rounded"
 >
-Register
+Sign Up
 </button>
 
 
@@ -86,4 +86,4 @@ Register
 }
 
 
-export default Register;
+export default SignUP;

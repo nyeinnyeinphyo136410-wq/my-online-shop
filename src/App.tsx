@@ -6,7 +6,7 @@ import Footer from "./components/Footer";
 import type { Product } from "./types";
 import CheckoutForm from "./pages/CheckoutForm";
 import Login from "./pages/Login";
-import Register from "./pages/Register";
+import Signup from "./pages/SignUP";
 import AdminDashboard from "./pages/AdminDashboard";
 import AddProduct from "./pages/AddProduct";
 import Cart from "./pages/Cart";
@@ -120,8 +120,8 @@ const decrease = (id:string) => {
 
 
       <Route
-        path="/register"
-        element={<Register />}
+        path="/signup"
+        element={<Signup />}
       />
       <Route
   path="/admin"
