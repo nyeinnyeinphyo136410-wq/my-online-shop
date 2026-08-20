@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
-import phoneImg from "../assets/phone.png";
-import laptopImg from "../assets/laptop.png";
+import phoneImg from "../assets/Phone.png";
+import laptopImg from "../assets/Laptop.png";
 import watchImg from "../assets/watch.png";
 import headphonesImg from "../assets/headphones.png";
 
