@@ -86,12 +86,20 @@ function Navbar({ cartCount }: Props) {
           </button>
           </div>
         ) : (
+          <div className="flex gap-3">
          <Link
  to="/login"
  className="cursor-pointer hover:bg-green-700 bg-green-500 text-white px-4 py-2 rounded"
 >
  Login
 </Link>
+          <Link
+ to="/signup"
+ className="cursor-pointer hover:bg-green-700 bg-green-500 text-white px-4 py-2 rounded"
+>
+ Sign up
+</Link>
+</div>
         )
       }
     
